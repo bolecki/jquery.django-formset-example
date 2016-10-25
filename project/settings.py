@@ -24,6 +24,7 @@ DEBUG = True
 
 ALLOWED_HOSTS = []
 
+CRISPY_TEMPLATE_PACK = 'bootstrap'
 
 # Application definition
 
@@ -34,7 +35,8 @@ INSTALLED_APPS = (
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blocks'
+    'blocks',
+    'crispy_forms'
 )
 
 MIDDLEWARE_CLASSES = (

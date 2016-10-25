@@ -1,5 +1,5 @@
 {% extends "blocks/building_form_base.html" %}
-
+{% load crispy_forms_tags %}
 {% block body %}
 {% with outer_formset=form %}
 <div class="container">
@@ -25,11 +25,11 @@
                         <div>
                             {{ outer_formset.empty_form.nested.management_form }}
                             <div class="empty-form">
-                                {{ outer_formset.empty_form.nested.empty_form.as_p }}
+                                {% crispy outer_formset.empty_form.nested.empty_form %}
                             </div>
                             {% for inner_form in outer_formset.empty_form.nested %}
                                 <div>
-                                    {{ inner_form.as_p }}
+                                    {% crispy inner_form %}
                                 </div>
                             {% endfor %}
                             <button type="button" class="btn btn-primary" data-action="add-inner-form">
@@ -37,7 +37,7 @@
                             </button>
                         </div>
                         <div>
-                            {{ outer_formset.empty_form.as_p }}
+                            {% crispy outer_formset.empty_form %}
                         </div>
                     </div>
                     {% for outer_form in outer_formset %}
@@ -47,11 +47,11 @@
                                 {{ outer_form.nested.management_form }}
                                 {{ outer_form.nested.non_form_errors }}
                                 <div class="empty-form">
-                                    {{ outer_form.nested.empty_form.as_p }}
+                                    {% crispy outer_form.nested.empty_form %}
                                 </div>
                                 {% for inner_form in outer_form.nested %}
                                     <div>
-                                        {{ inner_form.as_p }}
+                                        {% crispy inner_form %}
                                     </div>
                                 {% endfor %}
                                 <button type="button" class="btn btn-primary" data-action="add-inner-form">
@@ -59,7 +59,7 @@
                                 </button>
                             </div>
                             <div>
-                                {{ outer_form.as_p }}
+                                {% crispy outer_form %}
                             </div>
                         </div>
                     {% endfor %}

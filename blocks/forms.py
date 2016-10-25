@@ -1,5 +1,7 @@
 from django import forms
-from .models import Block
+from .models import Block, Tenant
+from crispy_forms.helper import FormHelper
+from crispy_forms.layout import Layout, Div
 
 class BlockForm(forms.ModelForm):
     #description = forms.CharField(label='Description', max_length=255)
@@ -8,13 +10,14 @@ class BlockForm(forms.ModelForm):
     	fields = '__all__'
 
 
-class BuildingForm(forms.Form):
-    description = forms.CharField(label='Description', max_length=255)
-    block = forms.ModelChoiceField(queryset=None)
-    address = forms.CharField(label='Address', max_length=255)
+class TenantForm(forms.ModelForm):
+    helper = FormHelper()
+    helper.form_tag = False
+    helper.layout = Layout(
+    	Div('name', style="color: blue;", title="Explication title"),
+    	Div('unit', style="color: green;", title="Explication title2")
+    )
 
-
-class TenantForm(forms.Form):
-    building = forms.ModelChoiceField(queryset=None)
-    name = forms.CharField(label='Name', max_length=255)
-    unit = forms.CharField(max_length=255)
+    class Meta:
+    	model = Tenant
+    	fields = '__all__'

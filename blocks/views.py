@@ -1,4 +1,4 @@
-from .forms import BlockForm, BuildingForm, TenantForm
+from .forms import BlockForm, TenantForm
 from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.views.generic import (
@@ -33,7 +33,8 @@ NestedBlockForm = nestedformset_factory(
     nested_formset=inlineformset_factory(
         models.Building,
         models.Tenant,
-        fields='__all__'
+        fields='__all__',
+        form=TenantForm
     )
 )
 
