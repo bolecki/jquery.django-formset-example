@@ -26,6 +26,8 @@ class ListBlocksView(ListView):
     model = models.Block
 
 
+class CreateBlockView(BlockView, CreateView):
+    pass
 
 NestedBlockForm = nestedformset_factory(
     models.Block,
@@ -36,9 +38,6 @@ NestedBlockForm = nestedformset_factory(
         fields='__all__'
     )
 )
-
-class CreateBlockView(BlockView, CreateView):
-    pass
 
 
 BlockForm = inlineformset_factory(models.Block, models.Building, fields='__all__')
