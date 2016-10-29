@@ -29,6 +29,7 @@ class ListBlocksView(ListView):
 class CreateBlockView(BlockView, CreateView):
     pass
 
+
 NestedBlockForm = nestedformset_factory(
     models.Block,
     models.Building,
