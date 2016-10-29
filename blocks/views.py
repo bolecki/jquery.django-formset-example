@@ -1,4 +1,4 @@
-from .forms import BlockForm, BuildingForm, TenantForm
+from .forms import BlockForm
 from django.core.urlresolvers import reverse
 from django.forms.models import inlineformset_factory
 from django.views.generic import (
